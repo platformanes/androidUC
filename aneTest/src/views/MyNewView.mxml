@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="MyNewView">
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:Group width="100%" height="100%" >
+		<s:Label text="Success!" />
+		<s:Button x="10" y="37" label="Back" click="navigator.popView()" styleName="back"/>
+	</s:Group>
+</s:View>

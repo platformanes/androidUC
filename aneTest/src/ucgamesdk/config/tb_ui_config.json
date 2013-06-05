@@ -1,0 +1,670 @@
+[{
+    name: "default",
+    match : [],  
+    config: {
+        topBar: {
+            text : "九游",
+            visible : true
+        },
+        
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "login",
+    match : ["^/user/user.html?", "^/user/user.html#?", ".*#!sso.*", ".*#!register.*"],
+    config: {
+        topBar: {
+            visible : false
+        }
+    }
+},{
+    name : "updatePassword",
+    match : [".*#!user/updatePassword.*"],
+    config: {
+        topBar: {
+            text : "修改密码",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "提交",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "doUpdatePass"
+        }
+    }
+},{
+    name : "secrecyPreBindUser",
+    match : [".*#!secrecy/preBind/user"],
+    config: {
+        topBar: {
+            text : "绑定手机",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : true,
+            visiblePersist:true,
+            btnShape: "back",
+            btnAction:"backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "secrecyBindValidUser",
+    match : [".*#!secrecy/bind/user"],
+    config: {
+        topBar: {
+            text : "绑定手机",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist:true,
+            btnShape: "back",
+            btnAction:"backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "secrecyQuestionUser",
+    match : [".*#!secrecy/securityQuestions/user"],
+    config: {
+        topBar: {
+            text : "绑定手机",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist:true,
+            btnShape: "back",
+            btnAction:"backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "secrecyPreBind",
+    match : [".*#!secrecy/preBind/secrecy"],
+    config: {
+        topBar: {
+            text : "绑定手机",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : false
+        },
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "sdBackGame"
+        }
+    }
+},{
+    name : "secrecyBindValid",
+    match : [".*#!secrecy/bind/secrecy"],
+    config: {
+        topBar: {
+            text : "绑定手机",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        },
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "sdBackGame"
+        }
+    }
+},{
+    name : "secrecyQuestion",
+    match : [".*#!secrecy/securityQuestions/secrecy"],
+    config: {
+        topBar: {
+            text : "密保问题",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        },
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "sdBackGame"
+        }
+    }
+},{
+    name : "publicSecrecy",
+    match : [".*#!secrecy/bind/public"],
+    config: {
+        topBar: {
+            text : "绑定手机",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backPage"
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        },
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "sdBackGame"
+        }
+    }
+},{
+    name : "publicSecrecyPreBind",
+    match : [".*#!secrecy/preBind/public"],
+    config: {
+        topBar: {
+            text : "绑定手机",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : false
+        },
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "sdBackGame"
+        }
+    }
+},{
+    name : "secrecyQuestionPublic",
+    match : [".*#!secrecy/securityQuestions/public"],
+    config: {
+        topBar: {
+            text : "密保问题",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backPage"
+        },
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "sdBackGame"
+        }
+    }
+},{
+    name : "secrecyHigh",
+    match : [".*id.uc.cn/misc/home/account.*"],
+    config: {
+        topBar: {
+            text : "账号安全",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "history",
+    match : [".*game/query.*"],
+    config: {
+        topBar: {
+            text : "充值记录",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "recharge",
+    match : [".*pay.uc.cn.*"],
+    config: {
+        topBar: {
+            text : "充值U点",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "VIP",
+    match : [".*sdk/h5/pm/list.*"],
+    config: {
+        topBar: {
+            text : "订购VIP会员",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "multiAccount",
+    match : [".*#!user/multiAccount"],
+    config : {
+        topBar: {
+            text : "多账号管理",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backToUser"
+        }, 
+        topBarBtnBackGame : {
+            text : "编辑",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "onEdit"
+        }
+    }
+},{
+    name : "forgetpassword",
+    match : [".*#!findPassword/passwordRetake/.*"],
+    config : {
+        topBar: {
+            text : "密码/账号找回",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "登录",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backToLogin"
+        }, 
+        topBarBtnBackGame : {
+            visible : false
+        }
+    }
+},{
+    name : "answerRetake",
+    match : [".*#!findPassword/securityAnswer"],
+    config : {
+        topBar: {
+            text : "密保问题",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            visible : false
+        }
+    }
+},{
+    name : "resetPassword",
+    match : [".*#!findPassword/resetPassword/.*"],
+    config : {
+        topBar: {
+            text : "重新设置密码",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            visible : false
+        }, 
+        topBarBtnBackGame : {
+            text : "返回登录",
+            visible : true,
+            btnShape: "rect",
+            visiblePersist: true,
+            btnAction: "backToLogin"
+        }
+    }
+},{
+    name : "notOpen",
+    match : [".*notOpen.*"],
+    config: {
+        topBar: {
+            text : "游戏未开服",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : false,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "返回游戏",
+            visible : false,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "validCode",
+    match : [".*validCode.*"],
+    config: {
+        topBar: {
+            text : "游戏内测中",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : false,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "退出",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "logout"
+        }
+    }
+},{
+    name : "agreement",
+    match : [".*user/agreement?"],
+    config: {
+        topBar: {
+            text : "UC账号",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "返回游戏",
+            visible : false,
+            visiblePersist: false,
+            btnShape: "rect",
+            btnAction: "logout"
+        }
+    }
+},{
+    name : "bbs",
+    match : [".*bbs.html?", ".*bbs.html.*"],
+    config : {
+        topBar: {
+            text : "游戏论坛",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "multiAccount",
+    match : [".*#!user/multiAccount"],
+    config : {
+        topBar: {
+            text : "多账号管理",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "编辑",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "onEdit"
+        }
+    }
+},{
+    name : "about",
+    match : [".*about?"],
+    config : {
+        topBar: {
+            text : "关于",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "返回游戏",
+            visible : false,
+            visiblePersist: false,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "feedback",
+    match : [
+        "^http://kf.9game.cn/.*",
+        "^/feedback/feedback.html.*"
+    ],
+    config: {
+        topBar: {
+		    text : "帮助",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : false,
+            visiblePersist: false,
+            btnShape: "rect",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "experience",
+    match : [
+        "^http://a.9game.cn/sdk.*"
+    ],
+    config: {
+        topBar: {
+            text : "游戏攻略",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+			visible : true,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name : "userInfo",
+    match : [".*#!user?"],
+    config: {
+        topBar: {
+            text : "个人中心",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "账户",
+            visible : false,
+            visiblePersist: false,
+            btnShape: "rect",
+            btnAction: "backPage"
+        }, 
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+},{
+    name: "rechargecenter",
+    match : [".*\/pay\/start.html.*"],  
+    config: {
+        topBar: {
+            text : "九游",
+            visible : true
+        },
+        topBarBtnBackPage : {
+            text : "后退",
+            visible : false,
+            visiblePersist: true,
+            btnShape: "back",
+            btnAction: "backPage"
+        }, 
+        
+        topBarBtnBackGame : {
+            text : "进入游戏",
+            visible : true,
+            visiblePersist: true,
+            btnShape: "rect",
+            btnAction: "backGame"
+        }
+    }
+}
+]

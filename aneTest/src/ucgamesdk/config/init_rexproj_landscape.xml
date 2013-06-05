@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project nbr="as2211hp" enable="true" packTime="201131211225">
+	<node nbr="common" ver="130104202906" entry=""/>
+	<node nbr="general" ver="130104202957" entry=""/>
+	<node nbr="game" ver="130104202946" entry="game.html"/>
+	<node nbr="pay" ver="130104203007" entry="start.html"/>
+	<node nbr="user" ver="130104203028" entry="user.html"/>
+	<node nbr="bbs" ver="130104202842" entry="bbs.html"/>
+	<node nbr="feedback" ver="130104202934" entry="feedback.html"/>
+	<node nbr="conf" ver="130130114613" entry=""/>
+	<node nbr="secrecy" ver="130104203018" entry="secrecy.html" />
+	<node nbr="vip" ver="130122182911" entry="http://vip.uc.cn/sdk/h5/pm/list" />
+<!-- <node nbr="user" ver="121015185722" entry="file:///android_asset/test/test_Android2.2.0.html"/> -->
+		
+	<clientapi apiName="login" entryNodeNbr="user" hash="" />
+	<clientapi apiName="pay" entryNodeNbr="pay" hash="" />
+	<clientapi apiName="user_center" entryNodeNbr="user" hash="#!user"/>
+	<clientapi apiName="update_pwd" entryNodeNbr="user" hash="#!user/updatePassword/true"/>
+	<clientapi apiName="login_game" entryNodeNbr="user" hash="#!sso/oldAcc"/>
+	<clientapi apiName="register" entryNodeNbr="user" hash="#!user/register"/>
+	<clientapi apiName="alpha_code" entryNodeNbr="game" hash="#!game/validCode/"/>
+	<clientapi apiName="game_not_open" entryNodeNbr="game" hash="#!game/notOpen"/>
+	<clientapiForUrl apiName="forget_pwd" url="http://id.uc.cn/security/forgotpassword/index?appId=17&amp;backUrl=http://sdk.g.uc.cn/public/callback/findPasswd.html"/>
+	<clientapiForUrl apiName="strategy" url="http://a.9game.cn/sdk/list.html"/>
+</project>
+
+

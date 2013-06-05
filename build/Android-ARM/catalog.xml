@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding ="utf-8"?>
+<swc xmlns="http://www.adobe.com/flash/swccatalog/9">
+  <versions>
+    <swc version="1.2" />
+    <flex version="4.6.0" build="23201" minimumSupportedVersion="3.0.0" />
+  </versions>
+  <features>
+    <feature-script-deps />
+    <feature-files />
+  </features>
+  <libraries>
+    <library path="library.swf">
+      <script name="cn/uc/gamesdk/ane/CallbackEvent" mod="1363846256173" signatureChecksum="1689606824" >
+        <def id="cn.uc.gamesdk.ane:CallbackEvent" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.events:Event" type="i" /> 
+      </script>
+      <script name="cn/uc/gamesdk/ane/UCGameSDK" mod="1364157883721" signatureChecksum="1695949136" >
+        <def id="cn.uc.gamesdk.ane:UCGameSDK" /> 
+        <dep id="cn.uc.gamesdk.ane:Constants" type="e" /> 
+        <dep id="JSON" type="e" /> 
+        <dep id="trace" type="e" /> 
+        <dep id="cn.uc.gamesdk.ane:CallbackEvent" type="e" /> 
+        <dep id="flash.events:StatusEvent" type="e" /> 
+        <dep id="flash.external:ExtensionContext" type="e" /> 
+        <dep id="cn.uc.gamesdk.ane:GameUserLoginResult" type="s" /> 
+        <dep id="flash.events:IEventDispatcher" type="s" /> 
+        <dep id="cn.uc.gamesdk.ane:CallbackEvent" type="s" /> 
+        <dep id="cn.uc.gamesdk.ane:IGameUserLogin" type="s" /> 
+        <dep id="flash.events:StatusEvent" type="s" /> 
+        <dep id="flash.external:ExtensionContext" type="s" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.events:EventDispatcher" type="i" /> 
+      </script>
+      <script name="cn/uc/gamesdk/ane/StatusCode" mod="1363508735110" signatureChecksum="2366170889" >
+        <def id="cn.uc.gamesdk.ane:StatusCode" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <script name="cn/uc/gamesdk/ane/Constants" mod="1364145920552" signatureChecksum="2585849941" >
+        <def id="cn.uc.gamesdk.ane:Constants" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <script name="_524db5c8bca6d71591c83aadb4ecf2e4f1cf51a382843a3e4dd6176952eb35d6_flash_display_Sprite" mod="1367140236484" signatureChecksum="1821604779" >
+        <def id="_524db5c8bca6d71591c83aadb4ecf2e4f1cf51a382843a3e4dd6176952eb35d6_flash_display_Sprite" /> 
+        <dep id="flash.system:Security" type="e" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="flash.display:Sprite" type="i" /> 
+      </script>
+      <script name="cn/uc/gamesdk/ane/GameUserLoginResult" mod="1364156105412" signatureChecksum="1412451734" >
+        <def id="cn.uc.gamesdk.ane:GameUserLoginResult" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <script name="cn/uc/gamesdk/ane/IGameUserLogin" mod="1363512303307" signatureChecksum="231811609" >
+        <def id="cn.uc.gamesdk.ane:IGameUserLogin" /> 
+        <dep id="cn.uc.gamesdk.ane:GameUserLoginResult" type="s" /> 
+        <dep id="AS3" type="n" /> 
+        <dep id="Object" type="i" /> 
+      </script>
+      <digests>
+        <digest type="SHA-256" signed="false" value="9ed495c7e28331b2af11a2c926a341c51eedd8d84c2385ae8105ffc9444e5cb2"   />
+      </digests>
+    </library>
+  </libraries>
+  <files>
+  </files>
+</swc>

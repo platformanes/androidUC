@@ -1,0 +1,2 @@
+var GameRoute=Route.extend({routes:{"!game/validCode/":"validCode","!game/validCode/:isRandom":"validCode","!game/notOpen/:msg":"notOpen","!game/notOpen":"notOpen"},initialize:function(){this.$el=document.querySelector("#gameContainer")},beforeRoute:function(){this.$el.innerHTML="";document.body.scrollTop=0},validCode:function(){this.$el.innerHTML=template.render("validateCodeTpl",{})},notOpen:function(a){a=a?decodeURIComponent(a):"\u8be5\u6e38\u620f\u5c1a\u672a\u5f00\u670d\uff0c\u60a8\u53ef\u4ee5\uff1a";
+this.$el.innerHTML=template.render("notOpenTpl",{message:a})}});

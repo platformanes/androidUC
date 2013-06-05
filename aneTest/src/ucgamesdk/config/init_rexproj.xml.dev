@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project nbr="production211" enable="true" packTime="201121211225">
+	<node nbr="common" ver="121015185748" entry=""/>
+	<node nbr="general" ver="121015185759" entry=""/>
+	<node nbr="game" ver="121015185752" entry="game.html"/>
+	<node nbr="pay" ver="121015185803" entry="https://dev.pay.uc.cn:8443/game/start.htm"/>
+	<node nbr="user" ver="121015185816" entry="user.html"/>
+	<node nbr="bbs" ver="121015185722" entry="bbs.html"/>
+	
+	<clientapi apiName="login" entryNodeNbr="user" hash="" />
+	<clientapi apiName="pay" entryNodeNbr="pay" hash="" />
+	<clientapi apiName="user_center" entryNodeNbr="user" hash="#!user"/>
+	<clientapi apiName="update_pwd" entryNodeNbr="user" hash="#!user/updatePassword/true"/>
+	<clientapi apiName="login_game" entryNodeNbr="user" hash="#!sso/oldAcc"/>
+	<clientapi apiName="register" entryNodeNbr="user" hash="#!user/register"/>
+	<clientapi apiName="alpha_code" entryNodeNbr="game" hash="#!game/validCode/"/>
+	<clientapi apiName="game_not_open" entryNodeNbr="game" hash="#!game/notOpen"/>
+	<clientapiForUrl apiName="forget_pwd" url="http://id.uc.cn/security/forgotpassword/index?appId=17&amp;backUrl=http://sdk.g.uc.cn/public/callback/findPasswd.html"/>
+</project>
+
+

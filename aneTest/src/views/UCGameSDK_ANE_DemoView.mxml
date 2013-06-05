@@ -1,0 +1,400 @@
+<?xml version="1.0" encoding="utf-8"?>
+<s:View xmlns:fx="http://ns.adobe.com/mxml/2009" 
+		xmlns:s="library://ns.adobe.com/flex/spark" title="主页视图">
+	
+	<fx:Script>
+		<![CDATA[
+			import cn.uc.gamesdk.ane.CallbackEvent;
+			import cn.uc.gamesdk.ane.Constants;
+			import cn.uc.gamesdk.ane.StatusCode;
+			import cn.uc.gamesdk.ane.UCGameSDK;
+			
+			import flash.trace.Trace;
+			
+			import mx.logging.Log;
+			
+			private var ucsdk: UCGameSDK;
+			private var isInitSucceeded: Boolean = false;
+			private var isLogined: Boolean = false;
+			private var sid: String;
+			
+			protected function btnInit_clickHandler(event:MouseEvent):void
+			{
+				log("init button clicked");
+				
+				this.isInitSucceeded = false;
+				if (ucsdk == null) 
+				{
+					ucsdk = new UCGameSDK();
+					ucsdk.addEventListener(Constants.EVENT_TYPE_UCGameSDKCallback, onCallback);
+				}
+				
+				//
+				var gameid:int = 230;
+				var cpid:int = 1;
+				var serverid:int = 2359;
+				var servername:String = "测试服";
+
+				//正式环境参数
+				//var gameid:int = ;
+				//var cpid:int = ;
+				//var serverid:int = ;
+				//var servername:String = ;
+
+				log("initing...");
+				outputs("initing...");
+				
+				ucsdk.setLogLevel(Constants.LOGLEVEL_DEBUG);
+				ucsdk.setOrientation(Constants.ORIENTATION_PORTRAIT);
+			    
+				ucsdk.initSDK(true, Constants.LOGLEVEL_DEBUG, gameid, cpid, serverid, servername, true, true);
+				//连接正式环境时，应把 debugMode 参数设为 false 
+				//ucsdk.initSDK(false, Constants.LOGLEVEL_DEBUG, gameid, cpid, serverid, servername, true, true);
+				
+			}
+			
+			protected function btnLogin_clickHandler(event:MouseEvent):void
+			{	this.isLogined = false;
+				this.sid = "";
+				
+				if (!this.isInitSucceeded)
+				{
+					outputs("尚未成功初始化，不能登录。");
+					return;
+				}
+				
+				var enableGameAccount:Boolean = this.ckbEnableGameAccountLogin.selected;
+				var gameAccountTitle:String = this.txtGameAccountTitle.text;
+				
+				var gameUserLoginOperation:GameUserLoginOperation = new GameUserLoginOperation();
+				
+				//如果不需支持游戏老账号登录，则 gameUserLoginOperation 参数置为 null 即可，同时 gameAccountTitle 参数也可置为空串
+				ucsdk.login(enableGameAccount, gameAccountTitle, gameUserLoginOperation);
+				log("logining...");
+				
+			}
+			
+			protected function btnPay_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.pay(true, 100, 235, "98001", "清风无限", "99", "customInfo-xxx-293-92");
+				log("paying...");
+				
+			}
+			
+			protected function btnShowFloatButton_clickHandler(event:MouseEvent):void
+			{
+				var x:Number;
+				var y:Number;
+				x = 0;
+				y = 70.5;
+				
+				ucsdk.showFloatButton(x, y);
+				log("show float button...");
+			}
+			
+			protected function btnHideFloatButton_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.hideFloatButton();
+				log("hie float button...");
+			}
+			
+			protected function btnNotifyZone_clickHandler(event:MouseEvent):void
+			{
+				var zoneName:String;
+				var roleId:String;
+				var roleName:String;
+				
+				zoneName = "66区-风起云涌";
+				roleId = "666888";
+				roleName = "弹钢琴的猫";
+				
+				ucsdk.notifyZone(zoneName, roleId, roleName);
+				log("user enter into the game zone ...");
+			}
+			
+			protected function btnEnterUserCenter_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.enterUserCenter();
+				log("enter user center");
+			}
+			
+			protected function btnEnterUI_clickHandler(event:MouseEvent):void
+			{
+				var business:String = "bbs";
+				ucsdk.enterUI(business);
+				log("enter ui - " + business);
+			}
+			
+			protected function btnSubmitExtendData_clickHandler(event:MouseEvent):void
+			{
+				var datatype:String;
+				var content:String;
+				
+				datatype = "createGameRole";
+				//下面只是演示数据，游戏中应用真实数据
+				content = "{" +
+                             "\"roleId\":\"29392\","+          
+                             "\"roleName\":\"落日传说\","+       
+                             "\"serverId\":2359,"+             
+                             "\"serverName\":\"98区-紫禁之巅\""+      
+                          "}";
+				
+				ucsdk.submitExtendData(datatype, content);
+				log("submit extend data... ");
+			}
+			
+			protected function btnIsUCVip_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.isUCVip();
+				log("Get wheter current user is UC VIP memeber...");
+			}
+			
+			protected function btnGetUCVipInfo_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.getUCVipInfo();
+				log("Get current user's UC VIP information...");
+			}
+			
+			protected function PORTRAIT_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.setOrientation(Constants.ORIENTATION_PORTRAIT);
+			}
+			
+			protected function LANDSCAPE_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.setOrientation(Constants.ORIENTATION_LANDSCAPE);
+			}
+			
+			protected function USER_clickHandler(event:MouseEvent):void
+			{
+				ucsdk.setOrientation(2); 
+			}
+			
+			
+			public function onCallback(event:CallbackEvent): void { 
+				log("received callback event: " + event.toString());
+				var callbackType:String = event.callbackType;
+				var code:int = event.code;
+				var data:Object = event.data;
+				
+				outputs("received callback event: callbackType=" + callbackType + ", code=" + code + ", data=" + (data != null ? data.toString() : "") );
+				
+				switch(callbackType) {
+					case Constants.CALLBACKTYE_InitSDK: 
+						//data 为 String 类型，表示错误说明
+						if (code == StatusCode.SUCCESS)
+						{
+							this.isInitSucceeded = true; 
+							outputs("SDK初始化成功");
+						}
+						else 
+						{
+							//初始化失败，需重新初始化
+							outputs("SDK初始化失败：" + String(data));
+						}
+						break;
+					
+					case Constants.CALLBACKTYE_Login:
+						//收到登录结果回调消息
+						//data 为 String 类型，表示错误说明
+						if (code == StatusCode.SUCCESS)
+						{
+							this.sid = ucsdk.getSid();
+							this.isLogined = true;
+							outputs("登录成功：sid=" + sid);
+						}
+						else if (code == StatusCode.LOGIN_EXIT)
+						{
+							//退出登录界面，返回到游戏画面，游戏需根据是否已经登录成功执行相应界面逻辑
+							outputs("退出登录界面，返回到游戏画面。。。");
+						}
+						else
+						{
+							//登录失败
+							outputs("登录失败：" + data.toString());
+						}
+						break;
+					
+					case Constants.CALLBACKTYE_Logout:
+						//收到用户切换账号（注销登录）消息，游戏需将游戏逻辑置于未登录状态
+						//data 为 String 类型，表示错误说明
+						outputs("用户退出当前账号了，需把游戏逻辑和画面置为未登录状态。。。");
+						break;
+					
+					case Constants.CALLBACKTYE_ShowFloatButton:
+						//收到悬浮按钮打开SDK界面（离开游戏画面） 或 SDK界面关闭（返回游戏画面）的消息
+						//data 为 String 类型，无实际意义
+						if (code == StatusCode.SDK_OPEN)
+						{
+							//SDK界面打开
+							outputs("打开SDK界面了。。。");
+						}
+						else if (code == StatusCode.SDK_CLOSE)
+						{
+							//SDK界面关闭
+							outputs("SDK界面关闭了，返回游戏画面。。。");
+						}
+						break;
+					
+					case Constants.CALLBACKTYE_EnterUserCenter:
+						//收到用户退出九游社区的消息，返回游戏画面
+						//data 无实际意义
+						if (code == StatusCode.SUCCESS)
+						{
+							outputs("退出九游社区，返回游戏画面。。。");
+						}
+						break;
+					
+					case Constants.CALLBACKTYE_EnterUI:
+						//收到用户退出SDK界面的消息，返回游戏画面
+						//data 无实际意义
+						if (code == StatusCode.SUCCESS)
+						{
+							outputs("退出SDK界面，返回游戏画面。。。");
+						}
+						break;
+					
+					case Constants.CALLBACKTYE_Pay:
+						//收到充值下单结果的消息，游戏可能需要将下单结果传给游戏服务器。游戏服务器保存后，等待最终支付结果，再为用户发放游戏货币或奖励
+						//data 中包含订单结果数据
+						if (code == StatusCode.SUCCESS) 
+						{
+							var orderId:String = data.orderId;
+							var orderAmount:Number = data.orderAmount;
+							var payWay:int = data.payWay;
+							var payWayName:String = data.payWayName;
+							
+							var txt:String = "orderId=" + orderId + ", orderAmount=" + orderAmount.toString() + ", payWay=" + payWay.toString() + ", payWayName=" + payWayName;
+							outputs("充值下单成功：" + txt);
+						}
+						else if (code == StatusCode.PAY_USER_EXIT)
+						{
+							//退出充值界面，返回游戏画面
+							outputs("退出充值界面，返回游戏画面。。。");
+						}
+						else if (code == StatusCode.FAIL)
+						{
+							//充值下单失败
+							outputs("充值下单失败！");
+						}
+						break;
+					
+					case Constants.CALLBACKTYE_IsUCVip:
+						//收到当前用户是否 UC 会员身份的回调消息
+						//data 为 Boolean 类型
+						if (code == StatusCode.SUCCESS)
+						{
+							var isUCVip:Boolean = Boolean(data);
+							outputs("当前用户是否 UC 会员：" + isUCVip.toString());
+						}
+						else if (code == StatusCode.VIP_FAIL)
+						{
+							//获取当前用户是否 UC 会员身份出错
+							outputs("获取当前用户是否 UC 会员身份出错：" + data.toString());
+						}
+						break;
+					
+					case Constants.CALLBACKTYE_GetUCVipInfo:
+						//收到获取当前用户的 UC 会员信息的回调消息
+						//data 为 Boolean 类型
+						if (code == StatusCode.SUCCESS)
+						{
+							var txtVipInfo:String;
+							
+							var status:int = data.status;
+							var grade:int = data.grade;
+							var validFrom:String = data.validFrom;
+							var validTo:String = data.validTo;
+							
+							txtVipInfo = "status=" + status.toString() + ", grade=" + grade.toString() + ", validFrom=" + validFrom + ", validTo=" + validTo + ", PrivilegeList={";
+							
+							var privilegeList:Object = data.previlegeList;
+							var enjoy:int;
+							var privilegeId:String;
+							for (var privilegeInfo:Object in privilegeList) 
+							{
+								enjoy = privilegeInfo.enjoy;
+								privilegeId = privilegeInfo.pId;
+								
+								txtVipInfo += "enjoy=" + enjoy.toExponential() + ", pId=" + privilegeId + ";";
+							}
+							
+							txtVipInfo += "}";
+
+							outputs("当前用户的 UC 会员信息：" + txtVipInfo);
+						}
+						else if (code == StatusCode.VIP_FAIL)
+						{
+							//获取当前用户的 UC 会员信息出错
+							outputs("获取当前用户的 UC 会员信息出错：" + data.toString());
+						}
+						break;
+				}
+				
+			}
+			
+			
+						
+			private function outputs(txt:String):void
+			{
+				txtOutputs.appendText(txt + "\n");
+			}
+			
+			private function log(msg:String):void
+			{
+				trace(msg);
+			}
+			
+			
+			
+		]]>
+	</fx:Script>
+	
+	<fx:Declarations>
+		<!-- 将非可视元素（例如服务、值对象）放在此处 -->
+	</fx:Declarations>
+	<s:Group width="100%" height="100%" >
+		<s:Label text="UC Game SDK Demo" />
+		<s:Button id="btnInit" x="19" y="38" width="167" height="58" label="Init"
+				  click="btnInit_clickHandler(event)" fontSize="24"/>
+		<s:Button id="btnLogin" x="236" y="38" width="161" height="58" label="Login"
+				  click="btnLogin_clickHandler(event)" fontSize="24"/>
+		<s:Button id="btnShowFloatButton" x="19" y="178" width="274" height="58"
+				  label="Show Float Button" click="btnShowFloatButton_clickHandler(event)"
+				  fontSize="24"/>
+		<s:Button id="btnHideFloatButton" x="308" y="178" width="274" height="58"
+				  label="Hide Float Button" click="btnHideFloatButton_clickHandler(event)"
+				  fontSize="24"/>
+		<s:Button id="btnNotifyZone" x="312" y="396" width="274" height="58"
+				  label="Notify Zone(Enter Game Zone)" click="btnNotifyZone_clickHandler(event)"
+				  fontSize="24"/>
+		<s:Button id="btnPay" x="453" y="39" width="168" height="58" label="Pay"
+				  click="btnPay_clickHandler(event)" fontSize="24"/>
+		<s:Button id="btnEnterUserCenter" x="20" y="395" width="274" height="58"
+				  label="Enter User Center" click="btnEnterUserCenter_clickHandler(event)"
+				  fontSize="24"/>
+		<s:Button id="btnEnterUI" x="312" y="470" width="274" height="58" label="Enter specific UI"
+				  click="btnEnterUI_clickHandler(event)" fontSize="24"/>
+		<s:Button id="btnSubmitExtendData" x="312" y="330" width="274" height="58"
+				  label="Submit Extend Data" click="btnSubmitExtendData_clickHandler(event)"
+				  fontSize="24"/>
+		<s:Button id="btnIsUCVip" x="20" y="470" width="274" height="58" label="Is UC VIP?"
+				  click="btnIsUCVip_clickHandler(event)" fontSize="24"/>
+		<s:Button id="btnGetUCVipInfo" x="312" y="554" width="278" height="58"
+				  label="Get UC Vip Info" click="btnGetUCVipInfo_clickHandler(event)" fontSize="24"/>
+		
+		<s:Button id="btnNext" x="25" y="554" width="269" height="58" label="Open New View"
+				  click="navigator.pushView(MyNewView)" fontSize="24" styleName="next"/>
+		<s:TextArea id="txtOutputs" x="0" y="641" width="100%" height="298" fontSize="24" text=""/>
+		<s:CheckBox id="ckbEnableGameAccountLogin" x="19" y="117" width="300" label="允许游戏老账号登录"
+					fontSize="24"/>
+		<s:TextInput id="txtGameAccountTitle" x="304" y="104" width="272" fontSize="24"
+					 prompt="游戏老账号的名称，" text="天诛号"/>
+		<s:Button id="btnPORTRAIT" x="19" y="259" width="274" height="54" label="PORTRAIT" click="PORTRAIT_clickHandler(event)"
+				  fontSize="24"/>
+		<s:Button id="btnLANDSCAPE" x="308" y="259" width="274" height="54" label="LANDSCAPE" click="LANDSCAPE_clickHandler(event)"
+				  fontSize="24"/>
+		<s:Button id="btnUSER" x="20" y="330" width="273" height="49" label="USER" click="USER_clickHandler(event)"
+				  fontSize="24"/>
+	</s:Group>
+</s:View>
