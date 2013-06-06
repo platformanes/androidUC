@@ -1,0 +1,13 @@
+<extension xmlns="http://ns.adobe.com/air/extension/3.5">
+	<id>cn.uc.gamesdk.ane.android</id>
+	<versionNumber>1</versionNumber>
+	<platforms>
+		<platform name="Android-ARM">
+			<applicationDeployment>
+				<nativeLibrary>ucane.jar</nativeLibrary>
+				<initializer>cn.uc.gamesdk.ane.UCGameSDKExtension</initializer>
+				<finalizer>cn.uc.gamesdk.ane.UCGameSDKExtension</finalizer>
+			</applicationDeployment>
+		</platform>
+	</platforms>
+</extension>
