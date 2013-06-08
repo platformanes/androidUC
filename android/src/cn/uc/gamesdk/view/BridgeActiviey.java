@@ -1,4 +1,4 @@
-package cn.uc.gamesdk.view;
+﻿package cn.uc.gamesdk.view;
 
 
 import org.json.JSONObject;
@@ -125,8 +125,7 @@ public class BridgeActiviey extends Activity implements OnClickListener
 						_context.dispatchStatusEventAsync(jobj.toString(), "");
 						if(code == UCGameSDKStatusCode.SUCCESS)
 						{
-							Log.d(TAG, "---SUCCESS-Center---Async--退出-------");
-							BridgeActiviey.this.finish();
+							
 						}
 						
 					} else {
@@ -195,9 +194,7 @@ public class BridgeActiviey extends Activity implements OnClickListener
 						jobj.put("data", jdata);
 					}
 					if (context != null) {
-						context.dispatchStatusEventAsync(jobj.toString(), "");
-						Log.d(TAG, "-----Result--Async--退出-------");
-						BridgeActiviey.this.finish(); 
+						
 					} else {
 						Log.d(TAG, "dispatchStatusEventAsync canceled: context is null");
 					}
